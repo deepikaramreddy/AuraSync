@@ -1,0 +1,114 @@
+/* General styles reused */
+body, h1, button, footer {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f0f8ff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #63b3ed;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Emergency Contacts Cards */
+.contact-card {
+  background-color: white;
+  border: 2px solid #63b3ed;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: scale(1.05);
+}
+
+/* Time Tracker Progress Bar */
+.tracker {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #d9f2ff;
+  border-radius: 20px;
+  margin-top: 10px;
+  overflow: hidden;
+  height: 20px;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background-color: #63b3ed;
+  transition: width 0.5s ease;
+}
+
+/* Mood Tracker Buttons */
+.mood-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.mood-btn {
+  border: none;
+  border-radius: 50px;
+  padding: 15px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.mood-btn.happy {
+  background-color: #ffdd59;
+}
+
+.mood-btn.neutral {
+  background-color: #d3d3d3;
+}
+
+.mood-btn.sad {
+  background-color: #87ceeb;
+}
+
+.mood-btn:hover {
+  transform: scale(1.1);
+}
+
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #63b3ed;
+  color: white;
+  font-size: 14px;
+}

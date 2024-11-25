@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathing Techniques</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #d4fc79, #96e6a1);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #006d77;
+            font-size: 2.5rem;
+            margin: 20px 0;
+        }
+
+        .button-container {
+            margin: 20px 0;
+        }
+
+        .technique-button {
+            background-color: #83c5be;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .technique-button:hover {
+            background-color: #006d77;
+        }
+
+        .technique {
+            display: none;
+            background: #ffffff;
+            border-radius: 10px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 700px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .technique h2 {
+            color: #007b7f;
+            margin-bottom: 15px;
+        }
+
+        .technique p {
+            text-align: left;
+            line-height: 1.6;
+            color: #333333;
+        }
+
+        .technique-animation {
+            width: 150px;
+            height: 150px;
+            margin: 10px auto;
+            background: radial-gradient(circle, #83c5be, #ffffff);
+            border-radius: 50%;
+            animation: breathingBubble 4s infinite ease-in-out;
+        }
+
+        /* Breathing animation */
+        @keyframes breathingBubble {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Breathing Techniques</h1>
+    <div class="button-container">
+        <button class="technique-button" onclick="showTechnique('diaphragmatic')">Diaphragmatic Breathing</button>
+        <button class="technique-button" onclick="showTechnique('box')">Box Breathing</button>
+        <button class="technique-button" onclick="showTechnique('nostril')">Alternate Nostril Breathing</button>
+        <button class="technique-button" onclick="showTechnique('478')">4-7-8 Breathing</button>
+    </div>
+
+    <!-- Diaphragmatic Breathing -->
+    <div id="diaphragmatic" class="technique">
+        <h2>1. Diaphragmatic Breathing (Belly Breathing)</h2>
+        <div class="technique-animation"></div>
+        <p><strong>Use:</strong> Helps to reduce stress, improve focus, and lower blood pressure.<br>
+        <strong>How:</strong> Inhale deeply through your nose so your belly rises. Exhale slowly through your mouth.</p>
+    </div>
+
+    <!-- Box Breathing -->
+    <div id="box" class="technique">
+        <h2>2. Box Breathing</h2>
+        <div class="technique-animation"></div>
+        <p><strong>Use:</strong> Useful for improving mental clarity and calming the nervous system.<br>
+        <strong>How:</strong> Inhale for 4 counts, hold your breath for 4 counts, exhale for 4 counts, and hold for 4 counts. Repeat.</p>
+    </div>
+
+    <!-- Alternate Nostril Breathing -->
+    <div id="nostril" class="technique">
+        <h2>3. Alternate Nostril Breathing</h2>
+        <div class="technique-animation"></div>
+        <p><strong>Use:</strong> Promotes relaxation and balances the body and mind.<br>
+        <strong>How:</strong> Close your right nostril with your thumb, inhale through the left nostril. Close the left nostril, exhale through the right nostril. Repeat.</p>
+    </div>
+
+    <!-- 4-7-8 Breathing -->
+    <div id="478" class="technique">
+        <h2>4. 4-7-8 Breathing</h2>
+        <div class="technique-animation"></div>
+        <p><strong>Use:</strong> Great for falling asleep quickly and calming anxiety.<br>
+        <strong>How:</strong> Inhale for 4 counts, hold for 7 counts, and exhale slowly for 8 counts. Repeat.</p>
+    </div>
+
+    <script>
+        function showTechnique(id) {
+            // Hide all techniques
+            const techniques = document.querySelectorAll('.technique');
+            techniques.forEach(tech => tech.style.display = 'none');
+            
+            // Show the selected technique
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

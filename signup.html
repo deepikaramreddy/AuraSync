@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup | Mental Health Awareness</title>
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #acb6e5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Signup Form Container */
+    .signup-container {
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .signup-container h1 {
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+      color: #333;
+    }
+
+    .signup-container p {
+      margin-bottom: 20px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* Input Fields */
+    .signup-container label {
+      display: block;
+      text-align: left;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .signup-container input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    .signup-container .password-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .signup-container .password-container input {
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    .signup-container .password-container button {
+      margin-left: 10px;
+      padding: 10px;
+      border: none;
+      background: #74ebd5;
+      color: #fff;
+      cursor: pointer;
+      font-size: 0.8rem;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .signup-container .password-container button:hover {
+      background: #57c4a5;
+    }
+
+    /* Submit Button */
+    .signup-container button.submit-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #74ebd5;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .signup-container button.submit-btn:hover {
+      background: #57c4a5;
+    }
+
+    /* Redirect Link */
+    .signup-container .redirect {
+      margin-top: 15px;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .signup-container .redirect a {
+      color: #74ebd5;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .signup-container .redirect a:hover {
+      color: #57c4a5;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h1>Signup</h1>
+    <p>Join us today to access mental health resources and support.</p>
+    <form action="dashboard.html" method="POST">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+      
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      
+      <label for="password">Password</label>
+      <div class="password-container">
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        <button type="button" id="togglePassword">Show</button>
+      </div>
+      
+      <label for="confirm-password">Confirm Password</label>
+      <div class="password-container">
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+        <button type="button" id="toggleConfirmPassword">Show</button>
+      </div>
+
+      <button type="submit" class="submit-btn">Signup</button>
+    </form>
+    <p class="redirect">Already have an account? <a href="login.html">Login here</a>.</p>
+  </div>
+
+  <script>
+    // Password Toggle Logic
+    const togglePassword = document.getElementById("togglePassword");
+    const password = document.getElementById("password");
+
+    const toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
+    const confirmPassword = document.getElementById("confirm-password");
+
+    togglePassword.addEventListener("click", function () {
+      const type = password.getAttribute("type") === "password" ? "text" : "password";
+      password.setAttribute("type", type);
+      this.textContent = type === "password" ? "Show" : "Hide";
+    });
+
+    toggleConfirmPassword.addEventListener("click", function () {
+      const type = confirmPassword.getAttribute("type") === "password" ? "text" : "password";
+      confirmPassword.setAttribute("type", type);
+      this.textContent = type === "password" ? "Show" : "Hide";
+    });
+  </script>
+</body>
+</html>

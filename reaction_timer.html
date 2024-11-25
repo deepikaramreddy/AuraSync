@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Timer Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #startButton, #clickArea {
+            margin: 20px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        #startButton:hover, #clickArea:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        #clickArea {
+            display: none;
+            width: 250px;
+            height: 250px;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+            background: #f1f1f1;
+            color: #333;
+            text-transform: uppercase;
+            transition: background 0.3s;
+            border: 2px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #clickArea.ready {
+            background: #4caf50;
+            color: white;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        #message {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        #highScore {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #f9d423;
+            text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.7);
+        }
+
+        button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <h1>Reaction Timer Game</h1>
+    <button id="startButton">Start Game</button>
+    <div id="clickArea">Wait...</div>
+    <p id="message"></p>
+    <p id="highScore">Fastest Time: --</p>
+    <button onclick="window.location.href='games.html'">Back to Games</button>
+
+    <script>
+        const startButton = document.getElementById('startButton');
+        const clickArea = document.getElementById('clickArea');
+        const message = document.getElementById('message');
+        const highScoreDisplay = document.getElementById('highScore');
+
+        let timeout = null;
+        let startTime = null;
+        let fastestTime = parseInt(localStorage.getItem('reactionHighScore') || 'Infinity', 10);
+
+        // Update high score display
+        if (fastestTime !== Infinity) {
+            highScoreDisplay.textContent = `Fastest Time: ${fastestTime} ms`;
+        }
+
+        // Start the game
+        startButton.addEventListener('click', () => {
+            message.textContent = '';
+            clickArea.style.display = 'flex';
+            clickArea.classList.remove('ready');
+            clickArea.textContent = 'Wait...';
+            startButton.style.display = 'none';
+
+            timeout = setTimeout(() => {
+                clickArea.textContent = 'Click!';
+                clickArea.classList.add('ready');
+                startTime = Date.now();
+            }, Math.random() * 3000 + 2000); // Random delay between 2-5 seconds
+        });
+
+        // Handle click on the reaction area
+        clickArea.addEventListener('click', () => {
+            if (!startTime) {
+                message.textContent = 'Too soon! Wait for "Click!" to appear.';
+                resetGame();
+            } else {
+                const reactionTime = Date.now() - startTime;
+                message.textContent = `Your reaction time: ${reactionTime} ms`;
+                updateHighScore(reactionTime);
+                resetGame();
+            }
+        });
+
+        // Update the high score
+        function updateHighScore(reactionTime) {
+            if (reactionTime < fastestTime) {
+                fastestTime = reactionTime;
+                localStorage.setItem('reactionHighScore', fastestTime);
+                highScoreDisplay.textContent = `Fastest Time: ${fastestTime} ms`;
+            }
+        }
+
+        // Reset the game
+        function resetGame() {
+            clickArea.style.display = 'none';
+            clickArea.classList.remove('ready');
+            startButton.style.display = 'block';
+            startTime = null;
+            clearTimeout(timeout);
+        }
+    </script>
+</body>
+</html>

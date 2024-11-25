@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood Tracker</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <header>
+    <h1>Mood Tracker</h1>
+  </header>
+  <main>
+    <p>How are you feeling today?</p>
+    <div class="mood-buttons">
+      <button class="mood-btn happy" onclick="showMood('Happy 😊')">Happy 😊</button>
+      <button class="mood-btn neutral" onclick="showMood('Neutral 😐')">Neutral 😐</button>
+      <button class="mood-btn sad" onclick="showMood('Sad 😢')">Sad 😢</button>
+    </div>
+    <p id="mood-feedback" style="margin-top: 20px;"></p>
+  </main>
+  <footer>
+    <p>© 2024 Mental Health Awareness Initiative</p>
+  </footer>
+  <script>
+    function showMood(mood) {
+      document.getElementById("mood-feedback").innerText = `You selected: ${mood}`;
+    }
+  </script>
+</body>
+</html>

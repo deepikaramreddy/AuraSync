@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mental Health Dashboard">
+  <title>Mental Health Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+    }
+    header {
+      background-color: #4db8ff;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    main {
+      display: flex;
+      height: calc(100vh - 70px); /* Account for header height */
+    }
+
+    /* Left Section (Buttons) */
+    .left-section {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-right: 2px solid #d9d9d9;
+    }
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .dashboard-btn {
+      background-color: #4db8ff;
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px black;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .dashboard-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Right Section (Empty for Future Features) */
+    .right-section {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Mental Health Dashboard
+  </header>
+  <main>
+    <!-- Left Section with Buttons -->
+    <div class="left-section">
+      <div class="dashboard">
+        <!-- Existing Buttons -->
+        <button class="dashboard-btn" onclick="navigateTo('chatbox.html')">Chat with Gemini</button>
+        <button class="dashboard-btn" onclick="navigateTo('games.html')">Stress Relief Games</button>
+        <button class="dashboard-btn" onclick="navigateTo('breathing_techniques.html')">Breathing Techniques</button>
+        <button class="dashboard-btn" onclick="navigateTo('suggestions.html')">Suggestions</button>
+        <button class="dashboard-btn" onclick="navigateTo('contact.html')">Contact Us</button>
+        
+        <!-- New Buttons -->
+        <button class="dashboard-btn" onclick="navigateTo('emergency_contacts.html')">Emergency Contacts</button>
+        <button class="dashboard-btn" onclick="navigateTo('time_tracker.html')">Time Tracker</button>
+        <button class="dashboard-btn" onclick="navigateTo('mood_tracker.html')">Mood Tracker</button>
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+      <!-- Right section is left empty for future features or graphics -->
+    </div>
+  </main>
+  <footer>
+    <p style="text-align: center; padding: 1rem; background-color: #4db8ff; color: white;">
+      © 2024 Mental Health Awareness Initiative
+    </p>
+  </footer>
+
+  <script>
+    // Function to navigate to the respective pages
+    function navigateTo(page) {
+      window.location.href = page;
+    }
+  </script>
+</body>
+</html>

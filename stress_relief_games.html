@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Relief Games</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(3, 200px);
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .game-card {
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            color: white;
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-card img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .game-card img:hover {
+            transform: scale(1.1);
+        }
+
+        .game-card h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .game-card p {
+            font-size: 16px;
+            color: white;
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 20px;
+            background: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <h1>Stress Relief Games</h1>
+    <div class="game-container">
+        <!-- Tic Tac Toe Game -->
+        <div class="game-card" onclick="window.location.href='tic_tac_toe.html'">
+            <img src="https://via.placeholder.com/100x100?text=XO" alt="Tic Tac Toe">
+            <h2>Tic-Tac-Toe</h2>
+            <p>Play the classic 3x3 grid game</p>
+        </div>
+
+        <!-- Memory Game -->
+        <div class="game-card" onclick="window.location.href='memory_game.html'">
+            <img src="https://via.placeholder.com/100x100?text=Memory" alt="Memory Game">
+            <h2>Memory Game</h2>
+            <p>Match pairs of cards</p>
+        </div>
+
+        <!-- Reaction Timer Game -->
+        <div class="game-card" onclick="window.location.href='reaction_timer.html'">
+            <img src="https://via.placeholder.com/100x100?text=Timer" alt="Reaction Timer">
+            <h2>Reaction Timer</h2>
+            <p>Test your reflex speed</p>
+        </div>
+    </div>
+    <button onclick="window.location.href='games.html'">Back to Home</button>
+</body>
+</html>

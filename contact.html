@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            color: #333;
+        }
+
+        /* Centered container for the content */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff6f61;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* Contact Links */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f9f9f9;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .contact-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-item img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .contact-text {
+            font-size: 1rem;
+            color: #333;
+            text-align: left;
+        }
+
+        .contact-text a {
+            text-decoration: none;
+            color: #ff6f61;
+            font-weight: bold;
+        }
+
+        .contact-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation Button */
+        .nav-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p>We’re here to help! Reach out to us via phone or email.</p>
+
+        <!-- Contact Info -->
+        <div class="contact-item">
+            <span class="contact-text">
+                <a href="tel:+919985748511">Phone: +91 9985748511</a>
+            </span>
+            <img src="https://img.icons8.com/color/48/000000/phone.png" alt="Phone Icon">
+        </div>
+
+        <div class="contact-item">
+            <span class="contact-text">
+                <a href="tel:+918520877111">Phone: +91 9704303898</a>
+            </span>
+            <img src="https://img.icons8.com/color/48/000000/phone.png" alt="Phone Icon">
+        </div>
+        <div class="contact-item">
+            <span class="contact-text">
+                <a href="tel:+919985748511">Phone: +91 8977912206</a>
+            </span>
+            <img src="https://img.icons8.com/color/48/000000/phone.png" alt="Phone Icon">
+        </div>
+
+
+        <div class="contact-item">
+            <span class="contact-text">
+                Email: <a href="mailto:mentalhealthawareness@gmail.com">mentalhealthawareness@gmail.com</a>
+            </span>
+            <img src="https://img.icons8.com/color/48/000000/gmail-new.png" alt="Gmail Icon">
+        </div>
+
+        <!-- Back to Home Page Button -->
+        <a href="dashboard.html" class="nav-btn">Back to Home Page</a>
+    </div>
+</body>
+</html>

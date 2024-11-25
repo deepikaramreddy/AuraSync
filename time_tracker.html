@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Spent Tracker</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <header>
+    <h1>Time Spent Tracker</h1>
+  </header>
+  <main>
+    <div class="tracker">
+      <p>You have spent <span id="time-spent">0</span> seconds on this site.</p>
+      <div class="progress-bar">
+        <div id="progress" class="progress"></div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>© 2024 Mental Health Awareness Initiative</p>
+  </footer>
+  <script>
+    let timeSpent = 0;
+    setInterval(() => {
+      timeSpent++;
+      document.getElementById("time-spent").innerText = timeSpent;
+      document.getElementById("progress").style.width = `${timeSpent % 100}%`;
+    }, 1000);
+  </script>
+</body>
+</html>

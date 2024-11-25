@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 36px;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 10px;
+            justify-content: center;
+            margin: 20px auto;
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            background: #f7f7f7;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .cell:hover {
+            background: #ffe0e0;
+            transform: scale(1.05);
+        }
+        .cell.taken {
+            cursor: default;
+        }
+        #scoreDisplay {
+            font-size: 18px;
+            margin: 15px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background: #ff758c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background: #ff4a6e;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Tic-Tac-Toe</h1>
+    <div id="board" class="board"></div>
+    <p id="scoreDisplay">Score: X - 0 | O - 0</p>
+    <button onclick="window.location.href='games.html'">Back to Games</button>
+    <script>
+        const board = document.getElementById('board');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        let currentPlayer = 'X';
+        let gameBoard = ['', '', '', '', '', '', '', '', ''];
+        let scores = {
+            X: parseInt(localStorage.getItem('ticTacToeScoreX') || '0', 10),
+            O: parseInt(localStorage.getItem('ticTacToeScoreO') || '0', 10)
+        };
+
+        function updateScoreDisplay() {
+            scoreDisplay.textContent = `Score: X - ${scores.X} | O - ${scores.O}`;
+        }
+
+        function createBoard() {
+            board.innerHTML = '';
+            gameBoard.forEach((value, index) => {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.dataset.index = index;
+                cell.textContent = value;
+                if (value) cell.classList.add('taken');
+                cell.addEventListener('click', () => makeMove(cell, index));
+                board.appendChild(cell);
+            });
+        }
+
+        function makeMove(cell, index) {
+            if (gameBoard[index] || checkWinner()) return;
+            gameBoard[index] = currentPlayer;
+            cell.textContent = currentPlayer;
+            cell.classList.add('taken');
+            if (checkWinner()) {
+                alert(`${currentPlayer} wins!`);
+                updateScore(currentPlayer);
+                resetGame();
+            } else if (gameBoard.every(cell => cell)) {
+                alert("It's a draw!");
+                resetGame();
+            } else {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            }
+        }
+
+        function checkWinner() {
+            const winningCombos = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+                [0, 4, 8], [2, 4, 6]             // Diagonals
+            ];
+            return winningCombos.some(combo => {
+                const [a, b, c] = combo;
+                return gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[b] === gameBoard[c];
+            });
+        }
+
+        function updateScore(winner) {
+            scores[winner]++;
+            localStorage.setItem(`ticTacToeScore${winner}`, scores[winner]);
+            updateScoreDisplay();
+        }
+
+        function resetGame() {
+            gameBoard = ['', '', '', '', '', '', '', '', ''];
+            currentPlayer = 'X';
+            createBoard();
+        }
+
+        // Initialize
+        updateScoreDisplay();
+        createBoard();
+    </script>
+</body>
+</html>

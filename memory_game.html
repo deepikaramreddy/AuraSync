@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            color: white;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 36px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 120px);
+            gap: 15px;
+            justify-content: center;
+            margin: 20px auto;
+        }
+        .card {
+            width: 120px;
+            height: 120px;
+            background: #f7f7f7;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 36px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card.matched {
+            background: #81c784;
+            color: white;
+            cursor: default;
+        }
+        #scoreDisplay, #highScoreDisplay {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background: #56c7f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background: #1b9dbb;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Memory Game</h1>
+    <div id="memoryGrid" class="grid"></div>
+    <p id="scoreDisplay">Score: 0</p>
+    <p id="highScoreDisplay">High Score: 0</p>
+    <button onclick="window.location.href='games.html'">Back to Games</button>
+
+    <script>
+        const cards = ['🍎', '🍎', '🍌', '🍌', '🍇', '🍇', '🍓', '🍓'];
+        let firstCard = null;
+        let secondCard = null;
+        let score = 0;
+
+        const highScore = parseInt(localStorage.getItem('memoryHighScore') || '0', 10);
+        document.getElementById('highScoreDisplay').innerText = `High Score: ${highScore}`;
+
+        cards.sort(() => Math.random() - 0.5);
+        const grid = document.getElementById('memoryGrid');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+
+        function createCards() {
+            cards.forEach((value, index) => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.dataset.value = value;
+                card.dataset.index = index;
+                card.addEventListener('click', () => flipCard(card));
+                grid.appendChild(card);
+            });
+        }
+
+        function flipCard(card) {
+            if (card.classList.contains('matched') || card === firstCard || card === secondCard) return;
+            card.textContent = card.dataset.value;
+            card.style.background = '#56c7f2';
+            if (!firstCard) {
+                firstCard = card;
+            } else if (!secondCard) {
+                secondCard = card;
+                setTimeout(checkMatch, 800);
+            }
+        }
+
+        function checkMatch() {
+            if (firstCard.dataset.value === secondCard.dataset.value) {
+                firstCard.classList.add('matched');
+                secondCard.classList.add('matched');
+                score++;
+                scoreDisplay.textContent = `Score: ${score}`;
+                updateHighScore();
+            } else {
+                firstCard.textContent = '';
+                secondCard.textContent = '';
+                firstCard.style.background = '';
+                secondCard.style.background = '';
+            }
+            firstCard = null;
+            secondCard = null;
+        }
+
+        function updateHighScore() {
+            const currentHighScore = parseInt(localStorage.getItem('memoryHighScore') || '0', 10);
+            if (score > currentHighScore) {
+                localStorage.setItem('memoryHighScore', score);
+                document.getElementById('highScoreDisplay').innerText = `High Score: ${score}`;
+            }
+        }
+
+        createCards();
+    </script>
+</body>
+</html>
